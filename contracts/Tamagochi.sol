@@ -19,5 +19,19 @@ contract Tamagochi{
 
  }
 
- 
+ mapping (address => TamaCreature) creatures;
+
+ function addTama( string memory name) public{
+    creatures[msg.sender] = (TamaCreature({
+        name: name,
+        foodLvl: 50,
+        happinessLvl: 50
+    }));
+ }
+
+ function getMyCreature() public  view returns (string memory name){
+    name = creatures[msg.sender].name;
+
+ }
+
 }
